@@ -12,7 +12,7 @@ module.exports = {
 	mode: 'development',
 	entry: {
         polyfill: 'babel-polyfill',
-        app: './src/app.js'
+        app: './src/js/app.js'
     },
 	
 	output: {
