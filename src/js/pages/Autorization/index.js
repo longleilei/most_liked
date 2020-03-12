@@ -1,11 +1,13 @@
 import './style.scss'
+import AuthService from "../../services/AuthService.js"
 export default class Autorization {
-    constructor() {
-
-    }
-    render() {
-        return /* html */
-        `<form class="needs-validation" novalidate>
+  constructor() {
+    this.auth = new AuthService();
+  }
+  render() {
+    return /* html */ `
+    <div class="card sign-up-card">
+    <form class="needs-validation" name="sign-up" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">First name</label>
@@ -74,48 +76,40 @@ export default class Autorization {
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>`
-    }
-
-    afterRender(){
-
-      let validation = document.forms["needs-validation"]; 
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-            let userInfo= {
-                firstName: form.validationCustom02['Email'].value,
-                lastName:form.validationCustom02['First Name'].value, 
-                userName: form.validationCustomUsername['Username'],  
-                city: form.validationCustom03['City'].value,
-                state: form.validationCustom04['State'].value, 
-                zip: form.validationCustom05['Zip'].value
-            }
-
-            if (!userInfo.firstName || !userInfo.lastName || !userInfo.userName || !userInfo.city || userInfo.state) return;
-
-            this.auth.autorization(userInfo).then((response)=>{
-              if (response['error'] == true){
-                  location.hash = 'autorization';                   
-              }
+</div>`
   }
-}
-            )}}
+
+  afterRender() {
+    let form = document.forms["sign-up"];
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let userInfo = {
+         /*  firstName: form.validationCustom02['Email'].value,
+          lastName: form.validationCustom02['First Name'].value,
+          userName: form.validationCustomUsername['Username'],
+          city: form.validationCustom03['City'].value,
+          state: form.validationCustom04['State'].value,
+          zip: form.validationCustom05['Zip'].value */
+          email: "gibajax553@provamail.com",
+          password: "54321ytrewq",
+          nickname: "dmgame",
+          first_name: "Yura",
+          last_name: "p",
+          phone: "0631234567",
+          gender_orientation: "male", // or "female"
+          city: "Kharkiv",
+          country: "Ukrane",
+          date_of_birth_day: "01",
+          date_of_birth_month: "03",
+          date_of_birth_year: "1989"
+        }
+        //if (!userInfo.firstName || !userInfo.lastName || !userInfo.userName || !userInfo.city || !userInfo.state) return;
+
+        this.auth.autorization(userInfo).then((response) => {
+            if (response['error'] == true) {
+              location.hash = 'autorization';
+            }
+          })
+        })
+    }
+  }

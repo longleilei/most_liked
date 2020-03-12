@@ -1,7 +1,14 @@
 export class HttpService {
-    get(url) {
-        return fetch(url);
-
+    async get(url) {
+        let response = await fetch(url);
+        let data = response.json();
+        return data;
+     /*    return new Promise((resolve, reject) => {
+            fetch(url) 
+            .then((response) => response.json())
+            .then((data) => resolve(data))
+            .catch((err) => reject(err));;
+        }); */
     }
 
     post(url, data) {
