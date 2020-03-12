@@ -31,7 +31,10 @@ export default class LoginPage{
             if (!userObj.email || !userObj.password) return;
 
             this.auth.login(userObj).then((response)=>{
-                console.log(response)
+                if (response['error'] == true){
+                    location.hash = 'autorization';                   
+                }
+                
             })
        })
     }

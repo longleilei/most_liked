@@ -14,6 +14,15 @@ export default class AuthService{
             })
         });
     }
+    autorization(user){
+        return new Promise((resolve, reject) => {
+            this.http.post(`${ENV.apiUrl}/public/auth/login`, user).then((response)=>{
+                resolve(response);
+            }).catch((error)=>{
+                
+            })
+        });
+    }
 
 
 }

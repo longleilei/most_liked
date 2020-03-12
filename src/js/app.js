@@ -1,11 +1,13 @@
 import HomePage from './pages/HomePage/index.js';
 import PageNotFound from './pages/PageNotFound/index.js';
 import LoginPage from './pages/LoginPage/index.js';
+import Autorization from './pages/Autorization/index.js'; 
 
 
  const routes ={
     '/': new HomePage("Home"),
-    'login' : new LoginPage()
+    'login' : new LoginPage(), 
+    'autorization': new Autorization()
 }
 
 const router = ()=>{
