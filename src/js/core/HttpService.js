@@ -1,6 +1,16 @@
 export class HttpService {
-    get(url) {
-        return fetch(url);
+    async get(url, options) {
+        let response = await fetch(url); /*, {
+            headers:{
+            Authentification: 'x-access-token'; 
+        } 
+        if (fetch(options) ){
+
+        }
+            
+        } */
+        let data = response.json(); 
+        return data; 
 
     }
 
