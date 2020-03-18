@@ -1,7 +1,38 @@
-.login-form-wrapper{
+.card-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 90vh;
+}
+
+.card-container{
+  width: 700px; 
+  height: 300px; 
+  display: flex; 
+  justify-content: space-between;
+}
+
+.left{
+  width: 40%; 
+}
+
+.circle{
+  height: 100px;
+  width:100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin-bottom: 3rem; 
+  margin-left: 1rem; 
+
+}
+button{
+  width: 8rem; 
+  height: 2rem; 
+  margin-top: 2rem; 
+  border-radius: 8px; 
+}
+.right{
+  width: 60%;  
+  background-color:red; 
 }

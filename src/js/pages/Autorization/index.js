@@ -9,8 +9,9 @@ export default class Autorization {
   render() {
     return /* html */
 
-    `<div class="login-form-wrapper"> 
-	<form name = "login-form">
+`<div class="login-form-wrapper"> 
+  <form name = "aut-form">
+  
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
@@ -242,11 +243,9 @@ export default class Autorization {
   }
 
   afterRender() {
-
-    let form = document.forms["login-form"];
+  let form = document.forms["aut-form"];
     //let submitbtn = document.querySelector('.btn'); 
     form.addEventListener('submit', (e) => {
-      debugger; 
       e.preventDefault();
       let userInfo = {
         email: form.elements['Email'].value,  

@@ -1,18 +1,22 @@
 export class HttpService {
-    async get(url, options) {
-        let response = await fetch(url); /*, {
-            headers:{
-            Authentification: 'x-access-token'; 
-        } 
-        if (fetch(options) ){
-
-        }
-            
-        } */
-        let data = response.json(); 
-        return data; 
-
+    async get(url) {
+    let response = 
+    await fetch(
+        url, 
+        data = response.json()); 
+        return data;
     }
+
+    async getWithParams(url, params){
+        let response = await fetch(url, {
+            headers:{
+                'x-access-token': localStorage.getItem(token)
+            },  
+        }, 
+         data = response.json()); 
+            return data;
+        }
+    
 
     post(url, data) {
         return new Promise((resolve, reject) => {

@@ -36,6 +36,7 @@ export default class LoginPage{
 
             this.auth.login(userObj).then((response)=>{
                 if (response['error'] == true){
+                    debugger; 
                     this.routing.navigate('autorization');                 
                 } else{
                     localStorage.setItem("token", response.token); 
