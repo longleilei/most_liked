@@ -4,6 +4,7 @@ import { ENV } from './../config/env';
 export default class AuthService{
     constructor(){
         this.http = new HttpService();
+        
     }
     login(user){
         return new Promise((resolve, reject) => {

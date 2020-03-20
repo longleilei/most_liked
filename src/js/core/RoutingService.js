@@ -1,5 +1,7 @@
-export default class RoutingService {
-   navigate(url){
-    location.hash = url;
-   }
+
+export default class RoutingService{
+  navigate(url){
+    location.hash = url; 
+  }
+
 }

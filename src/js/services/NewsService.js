@@ -1,14 +1,14 @@
-
 import { HttpService } from './../core/HttpService';
 import { ENV } from './../config/env'; 
 
-export default class UserService{
+export default class NewsService{
   constructor(){
       this.http = new HttpService();
   }
-  getUser(id){
+ 
+  getNews(token){
       return new Promise((resolve,reject) => {
-          this.http.get(`${ENV.apiUrl}/public/users/get-info/${id}`)
+          this.http.get(`${ENV.apiUrl}/api/public/news${token}`)
           .then((response) => {
               resolve(response); 
           }).catch((error)=> reject(error)); 
@@ -18,4 +18,3 @@ export default class UserService{
         } 
 
     }
-

@@ -1,10 +1,14 @@
 import './style.scss'
 import AuthService from "../../services/AuthService.js"
-import RoutingService from "../../core/RoutingService";
+
+import RoutingService from "../../core/RoutingService"; 
+//import Routing from "../../core/RoutingService"; 
+
 export default class LoginPage{
     constructor(){
         this.auth = new AuthService();
-        this.routing = new RoutingService();
+        this.routing = new RoutingService(); 
+
     }
     render(){
         return /* html */ `<div class="login-form-wrapper">
@@ -34,11 +38,13 @@ export default class LoginPage{
 
             this.auth.login(userObj).then((response)=>{
                 if (response['error'] == true){
-                    this.routing.navigate('autorization');       
+                    this.routing.navigate('autorization');                 
                 } else{
-                    localStorage.setItem("token", response.token);
-                    localStorage.setItem("user_id", response.id);
-                    this.routing.navigate(`user/${response.id}`);  
+                    localStorage.setItem("token", response.token); 
+                    localStorage.setItem("user_id", response.id); 
+                    this.routing.navigate(`user/${response.id}`);
+                    this.routing.navigate(`user/${response.token}`); 
+                    //location.navigation(`user/${response.id}`); 
                 }
                 
             })
