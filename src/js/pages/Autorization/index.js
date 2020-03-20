@@ -1,23 +1,26 @@
 
 import './style.scss'
 import AuthService from "../../services/AuthService.js"
+import RoutingService from "../../core/RoutingService"; 
+
 
 export default class Autorization {
   constructor() {
     this.auth = new AuthService();
+    this.routing = new RoutingService(); 
   }
   render() {
 
     return /* html */ `
     <div class="card sign-up-card">
-    <form class="needs-validation" name="sign-up" novalidate>
+    <form class="needs-validation" name="aut-form" novalidate>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
+      <label for="Email">Email</label>
       <input type="email" class="form-control" id="Email">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
+      <label for="Password">Password</label>
       <input type="password" class="form-control" id="Password">
     </div>
   </div>
@@ -25,26 +28,26 @@ export default class Autorization {
 	<div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">First Name</label>
-      <input type="email" class="form-control" id="FirstName">
+      <input type="text" class="form-control" id="FirstName">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Last Name</label>
-      <input type="password" class="form-control" id="LastName">
+      <label for="LastName">Last Name</label>
+      <input type="text" class="form-control" id="LastName">
     </div>
   </div>
 
 	<div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputEmail4">Nickname</label>
-      <input type="email" class="form-control" id="NickName">
+      <label for="NickName">Nickname</label>
+      <input type="text" class="form-control" id="NickName">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputPassword4">Telephone</label>
-      <input type="password" class="form-control" id="Phone">
+      <label for="Phone">Telephone</label>
+      <input type="text" class="form-control" id="Phone">
     </div>
 
 		<div class="form-group col-md-3">
-		<label for="inputState">Gender</label>
+		<label for="Gender">Gender</label>
       <select id="Gender" class="form-control">
         <option selected>Girl</option>
 				<option selected>Boy</option>
@@ -56,12 +59,12 @@ export default class Autorization {
 
 	<div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">City</label>
-      <input type="email" class="form-control" id="City">
+      <label for="City">City</label>
+      <input type="text" class="form-control" id="City">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Country</label>
-      <input type="password" class="form-control" id="Country">
+      <label for="Country">Country</label>
+      <input type="text" class="form-control" id="Country">
     </div>
   </div>
 
@@ -281,7 +284,12 @@ export default class Autorization {
 
       this.auth.autorization(userInfo).then((response) => {
         if (response['error'] == true) {
-          location.hash = 'autorization';
+         if(response.message){
+           alert(response.message);
+         }
+        } else {
+          alert(response.message);
+          this.routing.navigate(`login`);
         }
       }
       )

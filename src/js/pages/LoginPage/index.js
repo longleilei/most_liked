@@ -38,12 +38,15 @@ export default class LoginPage{
 
             this.auth.login(userObj).then((response)=>{
                 if (response['error'] == true){
-                    this.routing.navigate('autorization');                 
+                    if(response.message){
+                        alert(response.message);
+                      }
+                    //this.routing.navigate('autorization');                 
                 } else{
                     localStorage.setItem("token", response.token); 
                     localStorage.setItem("user_id", response.id); 
                     this.routing.navigate(`user/${response.id}`);
-                    this.routing.navigate(`user/${response.token}`); 
+                    //this.routing.navigate(`user/${response.token}`); 
                     //location.navigation(`user/${response.id}`); 
                 }
                 

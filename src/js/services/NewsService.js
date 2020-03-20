@@ -8,9 +8,9 @@ export default class NewsService{
  
   getNews(token){
       return new Promise((resolve,reject) => {
-          this.http.get(`${ENV.apiUrl}/api/public/news${token}`)
+          this.http.getWithToken(`${ENV.apiUrl}/public/news`, token)
           .then((response) => {
-              resolve(response); 
+              resolve(response.news); 
           }).catch((error)=> reject(error)); 
 
           }); 

@@ -1,7 +1,7 @@
 export class HttpService {
-    async get(url) {
+    async get(url, params) {
 
-        let response = await fetch(url);
+        let response = await fetch(url, );
         let data = response.json();
         return data;
      /*    return new Promise((resolve, reject) => {
@@ -12,13 +12,14 @@ export class HttpService {
         }); */
     }
 
-    async getWithParams(url, params){
+    async getWithToken(url, token){
+
         let response = await fetch(url, {
             headers:{
-                'x-access-token': localStorage.getItem(token)
+                'x-access-token': token
             },  
-        }, 
-         data = response.json()); 
+        })
+        let data = response.json(); 
             return data;
         }
     

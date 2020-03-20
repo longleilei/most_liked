@@ -2,34 +2,26 @@ import './style.scss';
 import NewsService from "../../services/NewsService"; 
 export default class UserPage{
     constructor(){
+        this.NewsService = new NewsService();
     }
 
     async beforeRender(){
-        let token = localStorage.getItem("user_token"); 
+        let token = localStorage.getItem("token"); 
         this._news = await this.NewsService.getNews(token); 
     }
-    render(newspiece){
+    
+    render(){
 
-        return /*html*/ 
-        `div class="card-wrapper">
-        <div class="card-container">
-          <div class="left">
-            <div class="circle"><img src="${news.avatar}" alt=""></img></div>
-            <div class="name">${news.name}</div>
-            <div class="country">${news.country}</div> 
-            <div class="status">${news.status}</div>
-            <div class="date">${news.date}</div>
-            <button>Follow</button>
-          </div>
-          <div class="right"><img src ="${news.img}" alt=""></div>
-        </div>
-    </div>`
+        return /*html*/ `<div class="news-page">
+            ${this.generateNews()}
+        </div>`
     
     }
     afterRender(){
-        let allNews = ''; 
-        news.forEach(element => {
-            this.allNews += this.render(element)});
+      /*   let allNews = ''; 
+        this._news.forEach(element => {
+            this.allNews += this.render(element)
+        }); */
 
         //this.container.insertAdjacentHTML("beforeend", this.allNews); 
 
@@ -37,5 +29,26 @@ export default class UserPage{
         //this.container = document.querySelector('.news-wrap .row')
         
 
+    }
+    generateNews(){
+        let allNewsTempl= ''
+        this._news.forEach(newspiece => {
+            allNewsTempl += this.generateNewsTemplate(newspiece)
+        });
+        return allNewsTempl;
+    }
+    generateNewsTemplate(newspiece){
+        return /*html*/ `<div class="card-wrapper">
+                <div class="card-container">
+                <div class="left">
+                    <div class="circle"><img src="${newspiece.owner.avatar}" alt=""></img></div>
+                    <div class="name">${newspiece.owner.full_name}</div>
+                    <div class="country">${newspiece.owner.country}</div> 
+                    <div class="date">${newspiece.date}</div>
+                    <button>Follow</button>
+                </div>
+                <div class="right"><img src ="${newspiece.pictures["0"].url}" alt=""></div>
+                </div>
+            </div>`
     }
 }
