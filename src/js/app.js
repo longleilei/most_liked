@@ -1,11 +1,14 @@
 import HomePage from './pages/HomePage/index.js';
+import UserPage from './pages/UserPage/index.js';
 import PageNotFound from './pages/PageNotFound/index.js';
 import LoginPage from './pages/LoginPage/index.js';
+
 import Autorization from './pages/Autorization/index.js';
 import RouterParse from './core/RouterParse';
 import UserPage from './pages/UserPage/index.js';
 
 let urlParse = new RouterParse(); 
+
 
  const routes ={
     '/': new HomePage("Home"),
@@ -16,6 +19,7 @@ let urlParse = new RouterParse();
 
 const router = async ()=>{
     let container = document.querySelector('app-content');
+
     let parsedRoute = urlParse.parseRequestedURL();
     let url = parsedRoute.route ?  parsedRoute.route + (parsedRoute.id ? "/:id":""):"/"; 
 

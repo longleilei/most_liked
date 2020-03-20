@@ -1,17 +1,16 @@
-import './style.scss';
-import AuthService from '../../services/AuthService.js'
 
+import './style.scss'
+import AuthService from "../../services/AuthService.js"
 
 export default class Autorization {
   constructor() {
     this.auth = new AuthService();
   }
   render() {
-    return /* html */
 
-`<div class="login-form-wrapper"> 
-  <form name = "aut-form">
-  
+    return /* html */ `
+    <div class="card sign-up-card">
+    <form class="needs-validation" name="sign-up" novalidate>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
@@ -241,7 +240,6 @@ export default class Autorization {
 </form>
 </div>`
   }
-
   afterRender() {
   let form = document.forms["aut-form"];
     //let submitbtn = document.querySelector('.btn'); 

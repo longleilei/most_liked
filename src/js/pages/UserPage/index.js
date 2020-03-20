@@ -1,3 +1,4 @@
+
 import './style.scss'; 
 import UserService from "../../services/UserService"; 
 export default class UserPage{
@@ -20,4 +21,5 @@ export default class UserPage{
     afterRender(){
         generateTemplate()
     }
+
 }
