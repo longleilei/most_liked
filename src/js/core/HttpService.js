@@ -1,7 +1,7 @@
 export class HttpService {
-    async get(url, params) {
+    async get(url) {
 
-        let response = await fetch(url, );
+        let response = await fetch(url);
         let data = response.json();
         return data;
      /*    return new Promise((resolve, reject) => {

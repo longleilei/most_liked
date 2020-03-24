@@ -37,14 +37,25 @@ export default class UserPage{
         });
         return allNewsTempl;
     }
+
+    formatDate(newspiece){
+        let date = new Date(newspiece.date); 
+
+        let options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        }
+        return date.toLocaleString('ru',options); 
+    }
     generateNewsTemplate(newspiece){
         return /*html*/ `<div class="card-wrapper">
                 <div class="card-container">
                 <div class="left">
-                    <div class="circle"><img src="${newspiece.owner.avatar}" alt=""></img></div>
+                    <img src="${newspiece.owner.avatar}" alt=""></img>
                     <div class="name">${newspiece.owner.full_name}</div>
                     <div class="country">${newspiece.owner.country}</div> 
-                    <div class="date">${newspiece.date}</div>
+                    <div class="date">${this.formatDate(newspiece)}</div>
                     <button>Follow</button>
                 </div>
                 <div class="right"><img src ="${newspiece.pictures["0"].url}" alt=""></div>

@@ -3,6 +3,7 @@ import HomePage from '../pages/HomePage/index.js';
 import Autorization from '../pages/Autorization/index.js';
 import UserPage from '../pages/UserPage/index.js';
 import NewsPage from '../pages/NewsPage/index.js';
+import WinnerPage from '../pages/WinnerPage/index.js';
 
 const routes = {
     '/': {
@@ -22,8 +23,12 @@ const routes = {
         name: "profile"
     },
     'news': {
-        component: new NewsPage(),
+        component: new NewsPage("News"),
         name: "News"
     },
+    'winners': {
+        component: new WinnerPage("Winners"),
+        name: 'Winners'
+    }
 }
 export default routes;
