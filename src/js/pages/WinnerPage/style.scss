@@ -1,15 +1,19 @@
+.container{
+  
 .main-pic{
   width: 100%; 
-  height: 500px; 
+  height: 350px; 
 }
 .main{
-
-  display: flex; 
-  justify-content: space-between;
-  .most-liked-pic{
-    img{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px; 
+    img{ 
+    flex-basis: 25%; 
     width: 250px; 
     height: 300px; 
+    margin: 15px; 
   }
+
 }
 }
