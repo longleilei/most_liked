@@ -2,11 +2,11 @@
 import PageNotFound from './pages/PageNotFound/index.js';
 import RouterParse from './core/RouterParse';
 import NavbarComponent from './navbar/index.js';
-
+import RoutingService from "./core/RoutingService"; 
 import routes from './router/routes.config';
 
 let urlParse = new RouterParse(); 
-
+const routing = new RoutingService();
 
 
 
@@ -18,13 +18,38 @@ const router = async ()=>{
     let parsedRoute = urlParse.parseRequestedURL();
     let url = parsedRoute.route ?  parsedRoute.route + (parsedRoute.id ? "/:id":""):"/"; 
 
-    let page = routes[url].component;
-
-    if (!page){
+    if (!routes[url]){
         container.innerHTML = new PageNotFound().render();
         return;
     }
+
+    let page = routes[url].component;
+    let guard = routes[url].guard;
+    let revertGuard = routes[url].revertGuard;
+    if(guard && revertGuard){
+        renderPage(page, container, header)
+        return;
+    }
+
+    if (guard){
+        if(guard.canActivate()){
+            renderPage(page, container, header);
+            return;
+        }else{
+            routing.navigate(`login`);
+        }
+      
+    } else{
+        renderPage(page, container, header);
+        return;
+    }
+   
+}
+async function renderPage(page, container, header){
     if(page.beforeRender){
+        container.innerHTML = `<div class="spinner-grow text-danger" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>`;
         await page.beforeRender();  
         container.innerHTML = page.render();
         page.afterRender && page.afterRender();
@@ -37,9 +62,8 @@ const router = async ()=>{
 
     let navBar = new NavbarComponent();
     header.innerHTML = navBar.render();
-
+    navBar.afterRender();
 }
-
 
 window.addEventListener("load", router);
 window.addEventListener("hashchange", router); 

@@ -50,7 +50,7 @@ export default class UserPage{
     }
     generateNewsTemplate(newspiece){
         return /*html*/ `<div class="card-wrapper">
-                <div class="card-container">
+                <div class="card card-container">
                 <div class="left">
                     <img src="${newspiece.owner.avatar}" alt=""></img>
                     <div class="name">${newspiece.owner.full_name}</div>

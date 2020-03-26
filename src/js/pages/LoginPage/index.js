@@ -43,8 +43,7 @@ export default class LoginPage{
                       }
                     //this.routing.navigate('autorization');                 
                 } else{
-                    localStorage.setItem("token", response.token); 
-                    localStorage.setItem("user_id", response.id); 
+                    this.auth.setUserData(response.token, response.id);
                     this.routing.navigate(`user/${response.id}`);
                     //this.routing.navigate(`user/${response.token}`); 
                     //location.navigation(`user/${response.id}`); 

@@ -13,9 +13,7 @@ export default class WinnerPage{
     }
     render(){
         return /*html*/ `<div class='container'>
-        <div class='main-pic'>
-          <img src="pic/Inspiring.png" alt='background'></img>
-        </div>
+        <div class='main-pic'></div>
         <div class='main'>${this.generatePics()}</div>`
     }
     afterRender(){
@@ -30,7 +28,7 @@ export default class WinnerPage{
         return allPicsTempl;
     }
     generatePicsTemplate(pic){
-        return /*html*/ `<img src='${pic.member_id.images[0].image_basic.url}'></img>
+        return /*html*/ `<img src='${pic.member_id.images[0].image_basic.url}'/>
             <div class='heart'><i class="far fa-heart"></i></div>
             <div class='view'><i class="fas fa-eye"></i></div>`
     }
