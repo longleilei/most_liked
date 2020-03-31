@@ -1,26 +1,25 @@
-
-.login-form-wrapper{
+.card{
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 90vh;
-}
+  width: 33%; 
+  margin:auto; 
 
-.controls{
-  display: flex; 
-  justify-content: space-between; 
-}
-#dob-day, #dob-month, #dob-year{
-  width: 120px; 
-  height: 30px; 
-}
 
-.btn{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem; 
-  width: 30%;
+  .controls{
+    display: flex; 
+    justify-content: space-between; 
+  }
+  #dob-day, #dob-month, #dob-year{
+    width: 120px; 
+    height: 30px; 
+  }
 
+  .btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem; 
+    width: 30%;
+
+  }
 }

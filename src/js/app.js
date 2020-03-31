@@ -4,6 +4,8 @@ import RouterParse from './core/RouterParse';
 import NavbarComponent from './navbar/index.js';
 import RoutingService from "./core/RoutingService"; 
 import routes from './router/routes.config';
+import Spinner from './pages/PreloaderComponent/index.js';
+
 
 let urlParse = new RouterParse(); 
 const routing = new RoutingService();
@@ -47,9 +49,7 @@ const router = async ()=>{
 }
 async function renderPage(page, container, header){
     if(page.beforeRender){
-        container.innerHTML = `<div class="spinner-grow text-danger" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>`;
+        container.innerHTML = new Spinner().render();
         await page.beforeRender();  
         container.innerHTML = page.render();
         page.afterRender && page.afterRender();

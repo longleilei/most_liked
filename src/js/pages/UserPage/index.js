@@ -14,14 +14,46 @@ export default class UserPage{
     }
     render(){
         return /*html*/ `<div class="home"> 
-            <img src = "${this._user.cover}" width="100%" height="400px">
-            <button id="newsBtn">News</button>
-            <button id="winnerBtn">Winners</button>
+            <div class='background'>
+            <img src = "${this._user.cover}" width="100%" height="400px"></div>
+            <div class='main'>
+                <div class='user-panel'>
+                    <div class='circle-pic'>
+                    </div>
+                    <div class='section name'>
+                        <div class='num'>Sukhovii Anastasia</div>
+                        <div class='title'>Ukraine</div>
+                    </div>
+                    <div class='section points'>
+                        <div class='num'>0</div>
+                        <div class='title'>Points</div>
+                    </div>
+                    <div class='section glories'>
+                        <div class='num'>0</div>
+                        <div class='title'>My Glories</div>
+                    </div>
+                    <div class='section favorites'>
+                        <div class='num'>0</div>
+                        <div class='title'>My Favorites</div>
+                    </div>
+                    <div class='section followers'>
+                        <div class='num'>0</div>
+                        <div class='title'>My Followers</div>
+                    </div>
+                    <div class='section following'>
+                        <div class='num'>0</div>
+                        <div class='title'>Followings</div>
+                    </div>
+                </div>
+                <div class='upload-pic'>
+                    <div class='pic-wrapper'></div>
+                </div>
+            </div>
         </div>`
     
     }
     afterRender(){
-        let btn = document.getElementById('newsBtn');
+        /*let btn = document.getElementById('newsBtn');
         btn.addEventListener('click', ()=>{
             this.routing.navigate(`news`);
         })
@@ -29,8 +61,7 @@ export default class UserPage{
         let btn2 = document.getElementById('winnerBtn');
         btn2.addEventListener('click', ()=>{
             this.routing.navigate(`winners`);
-        }) 
-        //generateTemplate()
+        }) */ 
     }
 
 }

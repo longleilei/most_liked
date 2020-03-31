@@ -1,0 +1,68 @@
+.background{
+  z-index:1;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  height:auto;
+
+  .user-panel{
+    width: 100%; 
+    height: 120px; 
+    background-color: white;
+    display: flex;
+    flex-direction: space-between;
+    z-index: 1;
+
+    .circle-pic{
+      height: 200px;
+      width: 200px;
+      background-color: #d9d9d9;
+      border-radius: 50%;
+      border: 1px solid #8c8c8c;
+      display: inline-block;
+      z-index:999;
+      margin-bottom: 30px;
+    }
+
+    .section{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px; 
+      text-align: center;
+      width: 150px; 
+      margin-left: 40px;
+
+      .name{
+        .title{
+          font-size: 10px; 
+        }
+      }
+
+
+    }
+  }
+
+
+
+  .upload-pic{
+    width:100%; 
+    height:600px; 
+    background-color: #d9d9d9;
+
+    .pic-wrapper{
+      width: 400px; 
+      height: 300px; 
+      background-color: white;
+      margin-top: 120px;
+      margin-left: 120px;
+      -webkit-box-shadow: 0 8px 6px -6px black;
+	    -moz-box-shadow: 0 8px 6px -6px black;
+	    box-shadow: 0 8px 6px -6px black;
+    }
+  }
+
+
+}

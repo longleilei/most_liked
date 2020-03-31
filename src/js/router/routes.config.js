@@ -5,6 +5,8 @@ import UserPage from '../pages/UserPage/index.js';
 import NewsPage from '../pages/NewsPage/index.js';
 import WinnerPage from '../pages/WinnerPage/index.js';
 import AuthGuard from '../guard/AuthGuard';
+import PaymentPage from '../pages/PaymentPage/index.js';
+import PaymentGuard from '../guard/PaymentGuard.js';
 const authGuard = new AuthGuard();
 
 const routes = {
@@ -42,6 +44,12 @@ const routes = {
         component: new LoginPage(),
         name: 'Logout',
         guard: authGuard
+    }, 
+    'payment': {
+        component: new PaymentPage(),
+        name: 'Payment',
+        guard: authGuard,
+        payproof: PaymentGuard
     }
 }
 export default routes;

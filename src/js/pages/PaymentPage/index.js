@@ -1,14 +1,8 @@
 import './style.scss'
-import AuthService from "../../services/AuthService.js"
 
-import RoutingService from "../../core/RoutingService"; 
-//import Routing from "../../core/RoutingService"; 
-
-export default class LoginPage{
+export default class PaymentPage{
     constructor(){
-        this.auth = new AuthService();
-        this.routing = new RoutingService(); 
-
+    
     }
     render(){
         return /* html */ `<div class="login-form-wrapper">
@@ -23,7 +17,6 @@ export default class LoginPage{
                     <input type="password" class="form-control" id="Password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
-                <button type="submit" class="btn btn-primary register">Register</button>
             </form>
         </div>`
     }
@@ -41,17 +34,16 @@ export default class LoginPage{
                 if (response['error'] == true){
                     if(response.message){
                         alert(response.message);
-                      }                 
+                      }
+                    //this.routing.navigate('autorization');                 
                 } else{
                     this.auth.setUserData(response.token, response.id);
-                    this.routing.navigate(`user/${response.id}`); 
+                    this.routing.navigate(`user/${response.id}`);
+                    //this.routing.navigate(`user/${response.token}`); 
+                    //location.navigation(`user/${response.id}`); 
                 }
                 
             })
-       })
-       let register = document.querySelector('.register')
-       register.addEventListener('click', (e)=>{
-            this.routing.navigate(`autorization`)
        })
     }
 }
