@@ -28,10 +28,12 @@ export default class WinnerPage{
         return allPicsTempl;
     }
     generatePicsTemplate(pic){
-        return /*html*/ `<img src='${pic.member_id.images[0].image_basic.url}'/>
-        <div class='overlay'>
-            <a href="#" class="icon" title="heart">
-            <i class="far fa-heart fa-5x"></i>${pic.member_id.total_votes}</a>
-        </div>`
+        return /*html*/ `<div class="card-img">
+                            <img src='${pic.member_id.images[0].image_basic.url}'/>
+                            <div class='overlay'>
+                                <a href="#" class="icon" title="heart">
+                                <i class="far fa-heart fa-2x"></i>${pic.member_id.total_votes}</a>
+                            </div>
+                        </div>`
     }
 }

@@ -8,4 +8,7 @@ export default class AuthGuard{
     canActivate(){
         return !!this._authService.token;
     }
+    get redirectPage(){
+        return 'login'
+    }
 }

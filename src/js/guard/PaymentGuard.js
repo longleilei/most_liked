@@ -1,11 +1,15 @@
 
-import AuthService from "../services/AuthService"
+import PaymentService from "../services/PaymentService"
 
 export default class PaymentGuard{
     constructor(params) {
-        this._authService = new AuthService();
+        this._paymentService = new PaymentService();
+      
     }
     canActivate(){
-        return !!this._authService.token;
+        return !!this._paymentService.getPayment();
+    }
+    get redirectPage(){
+        return 'payment'
     }
 }

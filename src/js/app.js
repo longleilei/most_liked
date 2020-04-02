@@ -38,7 +38,7 @@ const router = async ()=>{
             renderPage(page, container, header);
             return;
         }else{
-            routing.navigate(`login`);
+            routing.navigate(guard.redirectPage);
         }
       
     } else{

@@ -9,6 +9,7 @@ export default class NewsService{
 
 getWinners(part,limit){
     return new Promise((resolve,reject) => {
+        limit = 70
         this.http.get(`${ENV.apiUrl}/public/winners?part=${part}&limit=${limit}`)
         .then((response) => {
             resolve(response.winners); 

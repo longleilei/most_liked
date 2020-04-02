@@ -8,6 +8,7 @@ import AuthGuard from '../guard/AuthGuard';
 import PaymentPage from '../pages/PaymentPage/index.js';
 import PaymentGuard from '../guard/PaymentGuard.js';
 const authGuard = new AuthGuard();
+const paymentGuard = new PaymentGuard();
 
 const routes = {
     '/': {
@@ -38,7 +39,8 @@ const routes = {
     },
     'winners': {
         component: new WinnerPage("Winners"),
-        name: 'Winners'
+        name: 'Winners',
+        guard: paymentGuard,
     },
     'logout': {
         component: new LoginPage(),
@@ -48,8 +50,7 @@ const routes = {
     'payment': {
         component: new PaymentPage(),
         name: 'Payment',
-        guard: authGuard,
-        payproof: PaymentGuard
+        guard: authGuard
     }
 }
 export default routes;
