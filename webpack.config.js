@@ -37,7 +37,7 @@ module.exports = {
 
 	module: {
 		rules: [
-			{
+			/*{ 
                 test: /\.m?js$/,
                 exclude: /(node_modules)/,
                 use: {
@@ -46,7 +46,7 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            },
+            },*/
 			{
 				test: /\.scss$/,
 				use: [

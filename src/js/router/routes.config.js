@@ -40,7 +40,7 @@ const routes = {
     'winners': {
         component: new WinnerPage("Winners"),
         name: 'Winners',
-        guard: paymentGuard,
+        guard: authGuard,
     },
     'logout': {
         component: new LoginPage(),
@@ -50,7 +50,7 @@ const routes = {
     'payment': {
         component: new PaymentPage(),
         name: 'Payment',
-        guard: authGuard
+        guard: paymentGuard
     }
 }
 export default routes;

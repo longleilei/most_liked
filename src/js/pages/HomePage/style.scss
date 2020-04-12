@@ -1,0 +1,62 @@
+.container-home{
+  max-width: 100%;
+  max-height: 100%; 
+
+  .main-home{
+    width: 100%;
+    min-height:800px;
+    background: url("./pic/happy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+
+    #overlay {
+      position: absolute; 
+      width: 60%; 
+      height: 100%; 
+      top: 0;
+      left: 40%;
+      right:0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6); }
+
+    .welcome{
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      right:0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      }
+
+      .txt{
+        font-family: 'Pacifico', cursive;
+        color:#e6e6e6; 
+        font-size: 50px; 
+        margin-bottom: 1rem; 
+      }
+      .main-btns{
+        margin-left: 70px;  
+      }
+      button{
+        color: #494949 !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #e6e6e6;
+        padding: 15px;
+        border: 4px solid #494949 !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+
+        &:hover {
+          color: #ffffff !important;
+          background: #f6b93b;
+          border-color: #f6b93b !important;
+          transition: all 0.4s ease 0s;
+          }
+      
+      }
+  }
+}

@@ -7,10 +7,18 @@ export default class Homepage{
         this.routing = new RoutingService(); 
     }
     render(){
-        return /* html */ `<div class="home">
-            <button id="loginBtn">Login</button>
-            <button id="regBtn">Registration</button>
-        </div>`
+        return /* html */ `<div class='container-home'>
+        <div class='main-home'>
+          <div id="overlay"></div>
+          <div class='welcome'>
+            <div class='txt'>Welcome to Most Liked!</div>
+            <div class='main-btns'>
+              <button id="loginBtn">Login</button>
+              <button id="regBtn">Registration</button>
+            </div>
+          </div>
+        </div>
+      </div> `
     }
     afterRender(){
         let btn = document.getElementById('loginBtn');
