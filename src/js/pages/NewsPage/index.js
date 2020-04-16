@@ -1,6 +1,6 @@
 import './style.scss'; 
 import NewsService from "../../services/NewsService"; 
-export default class UserPage{
+export default class NewsPage{
     constructor(){
         this.NewsService = new NewsService();
     }

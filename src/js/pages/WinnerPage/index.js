@@ -7,35 +7,64 @@ export default class WinnerPage{
     }
 
     async beforeRender(){
-      let part = 1; 
-      let limit = 2; 
-      this._pics = await this.WinnerService.getWinners(part,limit); 
+      this.part = 1; 
+      this.limit = 2; 
+      let response = await this.WinnerService.getWinners(this.part, this.limit); 
+      this._pics = response.winners;
+      this.total = response.counts;
     }
     render(){
         return /*html*/ `<div class='container' id='container'>
-        <div class='main-pic'></div>
-        <div class='main' id='main'>${this.generatePics()}</div>`
+          <div class='main-pic'></div>
+          <div class='main' id='main'>${this.generatePics(this._pics)}
+            <div class="spinner-grow text-success" id="preloader" role="status">
+            </div>
+          </div>
+         
+        </div>`
     }
     afterRender(){
-      let cardImg = document.getElementById('card-img'); 
-      let main = document.getElementById('main'); 
-      let cardImgHeight = cardImg.offsetHeight; 
+      this.preloader = document.getElementById('preloader');
+     
+      this.main = document.getElementById('main'); 
       window.addEventListener('scroll', () => {
-        if (cardImgHeight >= window.scrollY) {
-          main.innerHTML += `${this.generatePics()}`;        
+        let cardImgs = this.main.getElementsByClassName('card-img'); 
+        if ( window.scrollY >= (this.main.offsetHeight-cardImgs[cardImgs.length-1].offsetHeight)) {
+          if(this._pics.length === this.total){
+            return;
+          }
+          if(!this.inProgress){ 
+            this.part++;
+            this.preloader.classList.add("visible")
+            this.getNewImages();
+        }   
+         // main.innerHTML += `${this.generatePics()}`;        
       } 
     });
   }
-  
-    generatePics(){
+    async getNewImages(){
+      this.inProgress = true;
+      let response = await this.WinnerService.getWinners(this.part, this.limit);
+      let newImgs = response.winners;
+      this.total = response.counts;
+      this.preloader.classList.remove("visible");
+      this.main.insertAdjacentHTML("beforeend", this.generatePics(newImgs));
+      this._pics.push(...newImgs);
+      if(this._pics.length === this.total){
+        alert('no more winners');
+        return;
+      }
+      this.inProgress = false;
+    }
+    generatePics(pics){
         let allPicsTempl= '';
-        this._pics.forEach(pic => {
+        pics.forEach(pic => {
             allPicsTempl += this.generatePicsTemplate(pic)
         });
         return allPicsTempl;
     }
     generatePicsTemplate(pic){
-        return /*html*/ `<div class="card-img" id="card-img">
+        return /*html*/ `<div class="card-img">
                             <img src='${pic.member_id.images[0].image_basic.url}'/>
                             <div class='overlay'>
                                 <a href="#" class="icon" title="heart">
