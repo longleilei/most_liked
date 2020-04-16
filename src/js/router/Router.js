@@ -17,7 +17,6 @@ export default class Router{
   async route() {
     let container = document.querySelector('app-content');
     let header = document.querySelector('app-header');
-
     let parsedRoute = this.urlParse.parseRequestedURL();
     let url = parsedRoute.route ?  parsedRoute.route + (parsedRoute.id ? "/:id":""):"/"; 
 
@@ -25,6 +24,8 @@ export default class Router{
         container.innerHTML = new PageNotFound().render();
         return;
     }
+    
+    this.currentPage && this.currentPage.destroy && this.currentPage.destroy();
 
     let page = routes[url].component;
     let guard = routes[url].guard;
@@ -64,6 +65,7 @@ export default class Router{
     let navBar = new NavbarComponent();
     header.innerHTML = navBar.render();
     navBar.afterRender();
+    this.currentPage = page;
 }
 
 }

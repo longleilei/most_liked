@@ -15,15 +15,15 @@ export default class LoginPage{
             <form name = "login-form">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                    <input type="password" class="form-control" id="Password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <button type="submit" class="btn btn-primary register">Register</button>
+                <button type="submit" class="btn btn-primary" >Login</button>
+                <button  class="btn btn-primary register">Register</button>
             </form>
         </div>`
     }
@@ -31,6 +31,7 @@ export default class LoginPage{
        let form = document.forms["login-form"];
        form.addEventListener('submit', (e)=>{
         e.preventDefault();
+        
             let userObj = {
                 email: form.elements['Email'].value,
                 password:form.elements['Password'].value

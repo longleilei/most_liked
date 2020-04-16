@@ -27,21 +27,26 @@ export default class WinnerPage{
       this.preloader = document.getElementById('preloader');
      
       this.main = document.getElementById('main'); 
-      window.addEventListener('scroll', () => {
-        let cardImgs = this.main.getElementsByClassName('card-img'); 
-        if ( window.scrollY >= (this.main.offsetHeight-cardImgs[cardImgs.length-1].offsetHeight)) {
-          if(this._pics.length === this.total){
-            return;
-          }
-          if(!this.inProgress){ 
-            this.part++;
-            this.preloader.classList.add("visible")
-            this.getNewImages();
-        }   
-         // main.innerHTML += `${this.generatePics()}`;        
-      } 
-    });
+      this.handler = () => this.scrollListener();
+     
+      window.addEventListener('scroll', this.handler);
   }
+
+    scrollListener(){
+      let cardImgs = this.main.getElementsByClassName('card-img'); 
+      if ( window.scrollY >= (this.main.offsetHeight-cardImgs[cardImgs.length-1].offsetHeight)) {
+        if(this._pics.length === this.total){
+          return;
+        }
+        if(!this.inProgress){ 
+          this.part++;
+          this.preloader.classList.add("visible")
+          this.getNewImages();
+      }   
+       // main.innerHTML += `${this.generatePics()}`;        
+      } 
+    }
+
     async getNewImages(){
       this.inProgress = true;
       let response = await this.WinnerService.getWinners(this.part, this.limit);
@@ -56,6 +61,7 @@ export default class WinnerPage{
       }
       this.inProgress = false;
     }
+
     generatePics(pics){
         let allPicsTempl= '';
         pics.forEach(pic => {
@@ -63,6 +69,7 @@ export default class WinnerPage{
         });
         return allPicsTempl;
     }
+
     generatePicsTemplate(pic){
         return /*html*/ `<div class="card-img">
                             <img src='${pic.member_id.images[0].image_basic.url}'/>
@@ -71,6 +78,10 @@ export default class WinnerPage{
                                 <i class="far fa-heart fa-2x"></i>${pic.member_id.total_votes}</a>
                             </div>
                         </div>`
+    }
+
+    destroy(){
+      window.removeEventListener('scroll', this.handler);
     }
 
   }

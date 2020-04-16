@@ -53,7 +53,7 @@ export default class NavbarComponent{
 
     generateItem(url, name){
       return /* html */ `<li class="nav-item active">
-                          <button class="nav-link current" data-url="${url}">${name}</button>
+                          <button class="nav-link ${url.split("/")[0] === this.routing.getCurrentUrl() ? 'current':''}" data-url="${url}">${name}</button>
                         </li>`
     }
 }

@@ -48,7 +48,7 @@ export default class NewsPage{
                     <div class="date">${this.formatDate(newspiece)}</div>
                     <button>Follow</button>
                 </div>
-                <div class="right"><img src ="${newspiece.pictures["0"]}" alt=""></div>
+                <div class="right"><img src ="${newspiece.pictures["0"].url}" alt=""></div>
                 </div>
             </div>`
     }
