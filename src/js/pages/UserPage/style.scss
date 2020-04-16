@@ -1,10 +1,11 @@
-.background{
-  z-index:1;
-}
+.home{
+  position: relative; 
+
 .main{
   display: flex;
   flex-direction: column;
   height:auto;
+
 
   .user-panel{
     width: 100%; 
@@ -12,7 +13,9 @@
     background-color: white;
     display: flex;
     flex-direction: space-between;
-    z-index: 1;
+
+    .circle-wrapper{
+      width: 20%; 
 
     .circle-pic{
       height: 200px;
@@ -21,26 +24,34 @@
       border-radius: 50%;
       border: 1px solid #8c8c8c;
       display: inline-block;
-      z-index:999;
-      margin-bottom: 30px;
+      margin-left: 30px; 
+      position: absolute;
+      top: 360px; 
+      }
     }
 
-    .section{
+    .section-wrapper{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 70%; 
+      padding-top: 2rem;
+      
+
+      .section{
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Pacifico', cursive; 
       font-size: 18px; 
       text-align: center;
-      width: 150px; 
-      margin-left: 40px;
+      margin-left: 30px;
 
       .name{
         .title{
           font-size: 10px; 
         }
       }
-
+    }
 
     }
   }
@@ -65,4 +76,5 @@
   }
 
 
+}
 }

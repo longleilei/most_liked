@@ -18,11 +18,13 @@ export default class UserPage{
             <img src = "${this._user.cover}" width="100%" height="400px"></div>
             <div class='main'>
                 <div class='user-panel'>
-                    <div class='circle-pic'>
-                    </div>
+                    <div class='circle-wrapper'>
+                        <div class='circle-pic'></div>
+                    </div> 
+                    <div class='section-wrapper'>
+
                     <div class='section name'>
                         <div class='num'>Sukhovii Anastasia</div>
-                        <div class='title'>Ukraine</div>
                     </div>
                     <div class='section points'>
                         <div class='num'>0</div>
@@ -43,6 +45,7 @@ export default class UserPage{
                     <div class='section following'>
                         <div class='num'>0</div>
                         <div class='title'>Followings</div>
+                    </div>
                     </div>
                 </div>
                 <div class='upload-pic'>

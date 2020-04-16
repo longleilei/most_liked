@@ -18,16 +18,6 @@ export default class UserPage{
     
     }
     afterRender(){
-      /*   let allNews = ''; 
-        this._news.forEach(element => {
-            this.allNews += this.render(element)
-        }); */
-
-        //this.container.insertAdjacentHTML("beforeend", this.allNews); 
-
-        //container is the div to place all cards with articles 
-        //this.container = document.querySelector('.news-wrap .row')
-        
 
     }
     generateNews(){
@@ -58,7 +48,7 @@ export default class UserPage{
                     <div class="date">${this.formatDate(newspiece)}</div>
                     <button>Follow</button>
                 </div>
-                <div class="right"><img src ="${newspiece.pictures["0"].url}" alt=""></div>
+                <div class="right"><img src ="${newspiece.pictures["0"]}" alt=""></div>
                 </div>
             </div>`
     }

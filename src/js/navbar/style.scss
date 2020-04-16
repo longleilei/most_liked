@@ -1,15 +1,18 @@
 .navbar{
   height: 100px; 
   li{
-    display: flex;
-    flex-direction: space-between;
-    width: 120px;
+    width:100%;
+    display:inline-block;
     button{
       box-shadow: 0px 0px 0px transparent;
       border: 0px solid transparent;
       text-shadow: 0px 0px 0px transparent;
       font-size: 20px;
       background-color: transparent;
+      margin-left: 2rem;
+        .current{
+          background-color: yellow;
+        }
       
     }
   }

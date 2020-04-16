@@ -35,12 +35,13 @@ export default class LoginPage{
                 email: form.elements['Email'].value,
                 password:form.elements['Password'].value
             }
-            if (!userObj.email || !userObj.password) return;
+            if (!userObj.email || !userObj.password) 
+            return;
 
             this.auth.login(userObj).then((response)=>{
                 if (response['error'] == true){
                     if(response.message){
-                        alert(response.message);
+                        return response.message && Swal.fire('Go register!');
                       }                 
                 } else{
                     this.auth.setUserData(response.token, response.id);
@@ -51,7 +52,7 @@ export default class LoginPage{
        })
        let register = document.querySelector('.register')
        register.addEventListener('click', (e)=>{
-            this.routing.navigate(`autorization`)
+            this.routing.navigate(`autorization`);
        })
     }
 }
